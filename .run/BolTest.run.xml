@@ -1,0 +1,11 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="BolTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+    <option name="envFilePaths">
+      <list>
+        <option value="$PROJECT_DIR$/../../../../../env/common.env" />
+      </list>
+    </option>
+    <TestRunner class="ExewenTest\Bol\BolTest" file="$PROJECT_DIR$/tests/BolTest.php" scope="Class" />
+    <method v="2" />
+  </configuration>
+</component>

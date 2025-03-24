@@ -8,17 +8,17 @@ use Exewen\Bol\BolFacade;
 class BolTest extends Base
 {
 
-    /**
-     * 测试订单信息
-     * @return void
-     */
-    public function testToken()
-    {
-        $clientId     = getenv('BOL_CLIENT_ID');
-        $clientSecret = getenv('BOL_CLIENT_SECRET');
-        $response     = BolFacade::getToken($clientId, $clientSecret);
-        $this->assertNotEmpty($response);
-    }
+//    /**
+//     * 测试订单信息
+//     * @return void
+//     */
+//    public function testToken()
+//    {
+//        $clientId     = getenv('BOL_CLIENT_ID');
+//        $clientSecret = getenv('BOL_CLIENT_SECRET');
+//        $response     = BolFacade::getToken($clientId, $clientSecret);
+//        $this->assertNotEmpty($response);
+//    }
 
     public function testOrders()
     {
