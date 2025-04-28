@@ -21,13 +21,15 @@ class OrdersService
 
     public function getOrders(array $params, array $header): string
     {
-        return $this->httpClient->get($this->driver, $this->ordersListUrl, $params, $header);
+        $response = $this->httpClient->get($this->driver, $this->ordersListUrl, $params, $header);
+        return $response->getBody()->getContents();
     }
 
     public function getOrderDetail(string $orderId, array $params, array $header): string
     {
         $url    = str_replace('{orderId}', $orderId, $this->ordersDetailUrl);
-        return $this->httpClient->get($this->driver, $url, $params, $header);
+        $response = $this->httpClient->get($this->driver, $url, $params, $header);
+        return $response->getBody()->getContents();
     }
 
 

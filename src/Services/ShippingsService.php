@@ -23,13 +23,15 @@ class ShippingsService
     public function setShipments(array $params, array $header)
     {
         $header['Content-Type'] = 'application/vnd.retailer.v10+json';
-        return $this->httpClient->post($this->driver, $this->setShipmentsUrl, $params, $header);
+        $response = $this->httpClient->post($this->driver, $this->setShipmentsUrl, $params, $header);
+        return $response->getBody()->getContents();
     }
 
     public function getShipmentsStatus($id, array $header)
     {
         $uri    = str_replace('{id}', $id, $this->setShipmentsStatusUrl);
-        return $this->httpClient->get($this->driver, $uri, [], $header);
+        $response = $this->httpClient->get($this->driver, $uri, [], $header);
+        return $response->getBody()->getContents();
     }
 
 }

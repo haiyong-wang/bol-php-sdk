@@ -27,7 +27,8 @@ class AuthService
         $header = [
             'Authorization' => "Basic " . base64_encode("$clientId:$clientSecret"),
         ];
-        return $this->httpClient->post($this->driver, $this->tokenUrl, $params, $header, [], HttpEnum::TYPE_FORM);
+        $response = $this->httpClient->post($this->driver, $this->tokenUrl, $params, $header, [], HttpEnum::TYPE_FORM);
+        return $response->getBody()->getContents();
     }
 
 
