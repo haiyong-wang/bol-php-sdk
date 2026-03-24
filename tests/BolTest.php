@@ -42,4 +42,39 @@ class BolTest extends Base
         $this->assertNotEmpty($response);
     }
 
+    public function testOffers()
+    {
+        BolFacade::setAccessToken(getenv('BOL_ACCESS_TOKEN'));
+        $params = [
+            'page'               => 1,
+        ];
+        $response = BolFacade::getOffers($params);
+        $this->assertNotEmpty($response);
+    }
+
+    public function testCreateOffer()
+    {
+        BolFacade::setAccessToken(getenv('BOL_ACCESS_TOKEN'));
+        $data = [
+            'ean' => '1234567890123',
+            'condition' => 'NEW',
+            'price' => 19.99,
+            'stock' => 10
+        ];
+        $response = BolFacade::createOffer($data);
+        $this->assertNotEmpty($response);
+    }
+
+    public function testUpdateOffer()
+    {
+        BolFacade::setAccessToken(getenv('BOL_ACCESS_TOKEN'));
+        $offerId = 'OFFER_ID'; // 替换为实际的offer ID
+        $data = [
+            'price' => 17.99,
+            'stock' => 15
+        ];
+        $response = BolFacade::updateOffer($offerId, $data);
+        $this->assertNotEmpty($response);
+    }
+
 }

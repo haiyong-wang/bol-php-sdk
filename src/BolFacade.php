@@ -15,6 +15,9 @@ use Exewen\Bol\Contract\BolInterface;
  * @method static array getOrderDetail(string $orderId, array $params = [], array $header = [])
  * @method static array setShipments(array $params = [], array $header = [])
  * @method static array getShipmentsStatus($id, array $header = [])
+ * @method static array getOffers(array $params, array $header = [])
+ * @method static array createOffer(array $data, array $header = [])
+ * @method static array updateOffer(string $offerId, array $data, array $header = [])
  */
 class BolFacade extends Facade
 {

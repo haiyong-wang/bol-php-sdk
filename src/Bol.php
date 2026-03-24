@@ -10,6 +10,7 @@ use Exewen\Bol\Exception\BolException;
 use Exewen\Bol\Services\AuthService;
 use Exewen\Bol\Services\OrdersService;
 use Exewen\Bol\Services\ShippingsService;
+use Exewen\Bol\Services\OffersService;
 use Exewen\Config\Contract\ConfigInterface;
 
 class Bol implements BolInterface
@@ -22,17 +23,21 @@ class Bol implements BolInterface
      */
     private $shippingsService;
 
+    private $offersService;
+
     public function __construct(
-        ConfigInterface  $config,
-        AuthService      $authService,
-        OrdersService    $ordersService,
-        ShippingsService $shippingsService
+        ConfigInterface      $config,
+        AuthService          $authService,
+        OrdersService        $ordersService,
+        ShippingsService     $shippingsService,
+        OffersService        $offersService
     )
     {
         $this->config           = $config;
         $this->authService      = $authService;
         $this->ordersService    = $ordersService;
         $this->shippingsService = $shippingsService;
+        $this->offersService    = $offersService;
     }
 
     public function setAccessToken(string $accessToken, string $channel = BolEnum::CHANNEL_API)
@@ -67,6 +72,21 @@ class Bol implements BolInterface
     public function getShipmentsStatus($id, array $header = [])
     {
         return json_decode($this->shippingsService->getShipmentsStatus($id, $header), true);
+    }
+
+    public function getOffers(array $params, array $header = [])
+    {
+        return json_decode($this->offersService->getOffers($params, $header), true);
+    }
+
+    public function createOffer(array $data, array $header = [])
+    {
+        return json_decode($this->offersService->createOffer($data, $header), true);
+    }
+
+    public function updateOffer(string $offerId, array $data, array $header = [])
+    {
+        return json_decode($this->offersService->updateOffer($offerId, $data, $header), true);
     }
 
 }
