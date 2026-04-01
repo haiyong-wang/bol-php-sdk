@@ -21,18 +21,21 @@ class OffersService
 
     public function getOffers(array $params, array $header): string
     {
+        $header['Accept'] = 'application/vnd.retailer.v11+json';
         $response = $this->httpClient->get($this->driver, $this->offersListUrl, $params, $header);
         return $response->getBody()->getContents();
     }
 
     public function createOffer(array $data, array $header): string
     {
+        $header['Accept'] = 'application/vnd.retailer.v11+json';
         $response = $this->httpClient->post($this->driver, $this->offersListUrl, $data, $header);
         return $response->getBody()->getContents();
     }
 
     public function updateOffer(string $offerId, array $data, array $header): string
     {
+        $header['Accept'] = 'application/vnd.retailer.v11+json';
         $url    = str_replace('{offer-id}', $offerId, $this->offersDetailUrl);
         $response = $this->httpClient->put($this->driver, $url, $data, $header);
         return $response->getBody()->getContents();
